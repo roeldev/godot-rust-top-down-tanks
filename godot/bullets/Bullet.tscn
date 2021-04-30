@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://bullets/Bullet.gdns" type="Script" id=1]
+[ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=2]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Lifetime" type="Timer" parent="."]
+
+[node name="Explosion" parent="." instance=ExtResource( 2 )]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_Explosion_animation_finished"]

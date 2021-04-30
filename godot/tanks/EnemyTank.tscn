@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://tanks/Tank.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/onlyObjects_retina_rotated.png" type="Texture" id=2]
+[ext_resource path="res://tanks/EnemyTank.gdns" type="Script" id=3]
+[ext_resource path="res://bullets/EnemyBullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/UnitDisplay.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 36 )
+
+[node name="EnemyTank" groups=[
+"damage_taker",
+] instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 3 )
+bullet_scene = ExtResource( 4 )
+max_health = 50
+
+[node name="Body" parent="." index="0"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 268, 186, 80, 76 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Turret" parent="." index="2"]
+texture = ExtResource( 2 )
+offset = Vector2( 20, 0 )
+region_enabled = true
+region_rect = Rect2( 371, 14, 60, 24 )
+
+[node name="Muzzle" parent="Turret" index="0"]
+position = Vector2( 50, 0 )
+
+[node name="Flash" parent="Turret" index="1"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="DetectRadius" type="Area2D" parent="." index="4"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
+
+[node name="LookAhead1" type="RayCast2D" parent="." index="5"]
+position = Vector2( 0, 30 )
+enabled = true
+cast_to = Vector2( 100, 0 )
+collision_mask = 7
+
+[node name="LookAhead2" type="RayCast2D" parent="." index="6"]
+position = Vector2( 0, -30 )
+enabled = true
+cast_to = Vector2( 100, 0 )
+collision_mask = 7
+
+[node name="UnitDisplay" parent="." index="7" instance=ExtResource( 5 )]
+
+[connection signal="health_changed" from="." to="UnitDisplay" method="_on_health_changed"]
+[connection signal="body_entered" from="DetectRadius" to="." method="_on_DetectRadius_body_entered"]
+[connection signal="body_exited" from="DetectRadius" to="." method="_on_DetectRadius_body_exited"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/onlyObjects_retina_rotated.png" type="Texture" id=1]
+[ext_resource path="res://environment/Obstacle.gdns" type="Script" id=2]
+
+[node name="Obstacle" type="StaticBody2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+type_name = ""
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

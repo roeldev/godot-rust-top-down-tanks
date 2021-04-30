@@ -1,0 +1,17 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/glassPanel_200.png-4d532062b9afb8d30b1a14f55f3c5527.res"
+group_file="res://ui/barHorizontal_200.png"
+valid=true
+[deps]
+
+
+source_file="res://ui/glassPanel_200.png"
+dest_files=[ "res://.import/glassPanel_200.png-4d532062b9afb8d30b1a14f55f3c5527.res" ]
+
+[params]
+
+atlas_file="res://ui/barHorizontal_200.png"
+import_mode=0

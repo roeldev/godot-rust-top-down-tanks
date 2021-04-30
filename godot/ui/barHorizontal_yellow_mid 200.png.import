@@ -1,0 +1,17 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/barHorizontal_yellow_mid 200.png-7ac2e0c635b6c1c651e729550bacf788.res"
+group_file="res://ui/barHorizontal_200.png"
+valid=true
+[deps]
+
+
+source_file="res://ui/barHorizontal_yellow_mid 200.png"
+dest_files=[ "res://.import/barHorizontal_yellow_mid 200.png-7ac2e0c635b6c1c651e729550bacf788.res" ]
+
+[params]
+
+atlas_file="res://ui/barHorizontal_200.png"
+import_mode=0
